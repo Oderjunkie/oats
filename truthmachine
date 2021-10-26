@@ -1,0 +1,16 @@
+⌄ℤ⌥⎡ ⌃⎤
+   ⎢⌥^⎬
+   ⎣  ⎦
+
+⌄ - stdin -> stack
+ℤ - int
+⌥ - dup
+⎡ - case 0:
+      ⌃ - stack -> stdout
+      ⎤ - exit case
+⎢ - case 1:
+      ⌥ - dup
+      ⌃ - stack -> stdout
+      ⎬ - loop case
+⎣ - default:
+      ⎦ - exit case
