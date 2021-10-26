@@ -188,6 +188,6 @@ def execute(program):
 if __name__ == '__main__':
     if len(argv)==1:
         print('usage: oats.py [filename]')
-        return
+        exit()
     with io.open(' '.join(argv[1:]), 'r', encoding='utf-8') as file:
         execute(file.read())
