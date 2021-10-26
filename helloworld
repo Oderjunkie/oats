@@ -1,0 +1,4 @@
+"Hello, World!"⌃
+
+"..." - "Hello, World!" -> stack
+⌃     - stack -> stdout
