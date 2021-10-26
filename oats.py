@@ -4,6 +4,7 @@
 from dataclasses import dataclass
 from typing import List
 from sys import argv
+import io
 
 @dataclass
 class Coord:
@@ -185,5 +186,8 @@ def execute(program):
     print('STACK DUMP:', stack)
 
 if __name__ == '__main__':
-    with open(' '.join(argv[1:]), 'r') as file:
+    if len(argv)==1:
+        print('usage: oats.py [filename]')
+        return
+    with io.open(' '.join(argv[1:]), 'r', encoding='utf-8') as file:
         execute(file.read())
