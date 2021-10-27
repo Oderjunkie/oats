@@ -3,6 +3,7 @@
 ## OPERATION
 
 Oats programs take place in a 2d grid, with an instruction pointer that will NOT wrap around, but instead fall off and halt execution.
+What could be more visual than a 2d programming language?
 
 ## NOTATION
 
