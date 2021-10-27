@@ -1,5 +1,5 @@
 99[⌥⌃" Bottles of beer on the wall,\n"⌃⌥⌃" Bottles of beer!\nTake one down, pass it around,\n"⌃1–+⌥1=⎡⌥⌃" Bottles of beer on the wall!\n\n"⌃                                                                                                                                                                                                                                          ⎤}
-                                                                                                     ⎣"1 Bottle of beer on the wall!\n\n1 Bottle of beer on the wall,\n1 Bottle of beer!\nTake one down, pass it around,\n0 Bottles of beer on the wall!\n\n0 Bottles of beer on the wall,\n0 Bottles of beer!\nGo to the store and buy some more,\n99 Bottles of beer on the wall!"⌃⍆⎦
+                                                                                                     ⎣"1 Bottle of beer on the wall!\n\n1 Bottle of beer on the wall,\n1 Bottle of beer!\nTake one down, pass it around,\n0 Bottles of beer on the wall!\n\n0 Bottles of beer on the wall,\n0 Bottles of beer!\nGo to the store and buy some more,\n99 Bottles of beer on the wall!"⌃⍆⎦⌀
 
 99     - 99 -> stack
 [ - default:
@@ -15,4 +15,5 @@
         "..."⌃ - "1 Bottle of beer on the wall!\n\n1 Bottle of beer on the wall,\n1 Bottle of beer!\nTake one down, pass it around,\n0 Bottles of beer on the wall!\n\n0 Bottles of beer on the wall,\n0 Bottles of beer!\nGo to the store and buy some more,\n99 Bottles of beer on the wall!" -> stack -> stdout
         ⍆      - hop over next character
         ⎦      - exit case (hopped)
-} - loop (sidestepped when bottle amount reaches 1)
+        ⌀      - drop top of stack (number of bottles)
+} - loop (quite literally sidestepped when bottle amount reaches 1)
