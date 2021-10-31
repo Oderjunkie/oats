@@ -25,7 +25,8 @@ NUMBER - Push number to the stack.
              NOTE: - is NOT negate. – is negate. - vs –.
 =≠<>≤≥ - Comparison operators.
 ¬∧∨    - Logical operators. NOT, AND, and OR respectively.
-             NOTE: If you call the top of the stack X, and the element directly under it Y, the binary operators put Y on the left, and X on the right.
+             NOTE: If you call the top of the stack X, and the element directly under it Y,
+                   the binary operators put Y on the left, and X on the right.
              NOTE: ∧, ⌃, and ^ all have seperate meanings.
                    and so do ⌄, v, and ∨.
 ⎡⎤ - Switch-case. Pop top element of stack,
