@@ -170,7 +170,7 @@ def execute(program):
                 char = get_char(pointer, program)
                 if char in '⎡⎢⎣[':
                     nestedness -= 1
-                elif char in '⎤⎥⎦⎫⎬⎭':
+                elif char in '⎤⎥⎦⎫⎬⎭]':
                     nestedness += 1
         elif char == 'ℝ':
             # Cast to float.
