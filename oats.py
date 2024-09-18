@@ -17,10 +17,11 @@ def get_char(coord: Coord, prog: List[str]) -> str:
     return prog[coord.y][coord.x]
 
 stack  = []
-fn     = {}
 stdlib = '⊤⊥0123456789""⌃⌄⌥⌀⤵⍖⍏⍆⍋f+·–/=≠<>≤≥¬∧∨⎡ℝℤ⎢⎣⎤⎥⎦⎫⎬⎭}ℙ'
 
-def execute(program):
+def execute(program, outerscope=None):
+    fn = {} if outerscope is None else outerscope
+
     global stack
 
     program = program.split('\n')
@@ -217,7 +218,7 @@ def execute(program):
             stack.append(str(stack.pop()))
         elif char in fn.keys():
             # Function call.
-            execute(fn[char])
+            execute(fn[char], dict(fn))
         pointer.x += 1
 
 if __name__ == '__main__':
@@ -229,4 +230,4 @@ if __name__ == '__main__':
 
     print('\n\n--- PROGRAM FINISHED ---')
     print('STACK DUMP:', stack)
-    print('FN DUMP: ', json.dumps(fn, indent=3))
+    
