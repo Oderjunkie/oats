@@ -1,6 +1,6 @@
 #!/bin/env python3
 # *-* coding: utf-8 *-*
-
+import json
 from dataclasses import dataclass
 from typing import List
 from sys import argv
@@ -16,10 +16,16 @@ def in_bounds(coord: Coord, prog: List[str]) -> bool:
 def get_char(coord: Coord, prog: List[str]) -> str:
     return prog[coord.y][coord.x]
 
-def execute(program):
+stack  = []
+stdlib = '⊤⊥0123456789""⌃⌄⌥⌀⤵⍖⍏⍆⍋f+·–/=≠<>≤≥¬∧∨⎡ℝℤ⎢⎣⎤⎥⎦⎫⎬⎭}ℙ'
+
+def execute(program, outerscope=None):
+    fn = {} if outerscope is None else outerscope
+
+    global stack
+
     program = program.split('\n')
     pointer = Coord(0, 0)
-    stack = []
 
     while in_bounds(pointer, program):
         char = get_char(pointer, program)
@@ -89,6 +95,35 @@ def execute(program):
             string = stack.pop()
             stack.append(string[0])
             stack.append(string[1:])
+        elif char == 'f':
+            # Function declaration.
+            pointer.x += 1
+            char = get_char(pointer, program)
+            if char in stdlib: raise Exception(f"fn name \"{char}\" is reserved")
+            if char in fn.keys(): raise Exception(f"invalid redeclaration of fn {char}")
+
+            ident = char
+
+            pointer.x += 1
+            char = get_char(pointer, program)
+            if char != '[': raise Exception(f"unexpectedly found \"{char}\" instead of code block (\"[CODE]\") after function declaration")
+
+            subprogramstart = pointer.x
+            nestedness = 1
+            while 0 < nestedness and in_bounds(pointer, program):
+                pointer.x += 1
+                char = get_char(pointer, program)
+                if char == '[':
+                    nestedness += 1
+                elif char == ']':
+                    nestedness -= 1
+            subprogramend = pointer.x
+
+            subprogram = ""
+            for line in program:
+                subprogram += f"{line[subprogramstart:subprogramend+1]}\n"
+
+            fn[ident] = subprogram
         elif char == '+':
             # Add.
             y, x = stack.pop(), stack.pop()
@@ -181,9 +216,10 @@ def execute(program):
         elif char == 'ℙ':
             # Cast to string.
             stack.append(str(stack.pop()))
+        elif char in fn.keys():
+            # Function call.
+            execute(fn[char], dict(fn))
         pointer.x += 1
-    print('\n\n--- PROGRAM FINISHED ---')
-    print('STACK DUMP:', stack)
 
 if __name__ == '__main__':
     if len(argv)==1:
@@ -191,3 +227,7 @@ if __name__ == '__main__':
         exit()
     with io.open(' '.join(argv[1:]), 'r', encoding='utf-8') as file:
         execute(file.read())
+
+    print('\n\n--- PROGRAM FINISHED ---')
+    print('STACK DUMP:', stack)
+    

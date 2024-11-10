@@ -41,6 +41,10 @@ NUMBER - Push number to the stack.
          NOTE: While the interpreter i made ignores ] entirely,
                omitting it is UB.
 
+f - Declare a function. it is followed by a single character, the function's name, 
+                        after that a code block implementing the function.
+          NOTE: redeclaring a function is illegal 
+
 ⎫
 ⎬ - Loop current switch statement.
 ⎬

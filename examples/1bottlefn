@@ -1,0 +1,22 @@
+f_[f*[1⌃]*]_f*[" bottle of beer."⌃]*
+
+
+f - declare function
+     _ - function name
+     [ - code block start
+          f - declare function
+               * - function name
+               [ - code block start
+                   1 - 1 -> stack
+                   ⌃     - stack -> stdout
+                   ] - end block
+          * - call function `*`
+          ] - end block
+_ - call function `_`
+f - declare function
+     * - function name
+     [ - code block start
+          "..." - " bottle of beer." -> stack
+          ⌃     - stack -> stdout
+          ] - end block
+* - call function `*`
