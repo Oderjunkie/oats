@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 # *-* coding: utf-8 *-*
 import json
 from dataclasses import dataclass
@@ -17,7 +17,7 @@ def get_char(coord: Coord, prog: List[str]) -> str:
     return prog[coord.y][coord.x]
 
 stack  = []
-stdlib = '⊤⊥0123456789""⌃⌄⌥⌀⤵⍖⍏⍆⍋f+·–/=≠<>≤≥¬∧∨⎡ℝℤ⎢⎣⎤⎥⎦⎫⎬⎭}ℙ'
+stdlib = '⊤⊥0123456789""⌃⌄⌥⌀⤵⍖⍏⍆⍋λ+·–/=≠<>≤≥¬∧∨⎡ℝℤ⎢⎣⎤⎥⎦⎫⎬⎭}ℙ'
 
 def execute(program, outerscope=None):
     fn = {} if outerscope is None else outerscope
@@ -95,7 +95,7 @@ def execute(program, outerscope=None):
             string = stack.pop()
             stack.append(string[0])
             stack.append(string[1:])
-        elif char == 'f':
+        elif char == 'λ':
             # Function declaration.
             pointer.x += 1
             char = get_char(pointer, program)
@@ -230,4 +230,3 @@ if __name__ == '__main__':
 
     print('\n\n--- PROGRAM FINISHED ---')
     print('STACK DUMP:', stack)
-    

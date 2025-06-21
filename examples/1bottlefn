@@ -1,10 +1,10 @@
-f_[f*[1⌃]*]_f*[" bottle of beer."⌃]*
+λ_[λ*[1⌃]*]_λ*[" bottle of beer."⌃]*
 
 
-f - declare function
+λ - declare function
      _ - function name
      [ - code block start
-          f - declare function
+          λ - declare function
                * - function name
                [ - code block start
                    1 - 1 -> stack
@@ -13,7 +13,7 @@ f - declare function
           * - call function `*`
           ] - end block
 _ - call function `_`
-f - declare function
+λ - declare function
      * - function name
      [ - code block start
           "..." - " bottle of beer." -> stack
