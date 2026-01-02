@@ -17,10 +17,13 @@ NUMBER - Push number to the stack.
 ⌥ - Duplicate top element of stack.
 ⌀ - Ditch the top element of the stack.
 ⤵ - Swap top two elements of the stack.
+⍖ - Put top element of the stack at the bottom.
+⍏ - Put bottom element of the stack at the top.
 ⍆ - Hop over next character.
 ⍋ - Pop string from stack, push first character, push rest of string.
 
 +·     - Add, Multiply.
+             NOTE: + can also concatenate strings together
 –/     - Negate, Reciprocal.
              NOTE: - is NOT negate. – is negate. - vs –.
 =≠<>≤≥ - Comparison operators.
@@ -33,16 +36,18 @@ NUMBER - Push number to the stack.
 ⎢⎥   Top row executes if zero, Next row executes if one, etc...,
 ⎣⎦   Last row executes if none of the above apply.
 
+     After the switch-case row finishes executing, the execution is returned back 
+     to right after the end of the top row of the switch case.
      If you have nested switches, and one of the rows of the outer switch case
      violently rams into the middle of the inner switch case,
      it will jump to the row of code after the entire switch.
 
 [] - Code block.
-         NOTE: While the interpreter i made ignores ] entirely,
+         NOTE: While the interpreter I made ignores ] entirely,
                omitting it is UB.
 
-λ - Declare a function. it is followed by a single character, the function's name, 
-                        after that a code block implementing the function.
+λ - Declare a function. it is followed by the function's name and 
+                        a code block implementing that function.
           NOTE: redeclaring a function is illegal 
 
 ⎫

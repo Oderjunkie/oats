@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # *-* coding: utf-8 *-*
-import json
 from dataclasses import dataclass
 from typing import List
 from sys import argv
@@ -16,8 +15,11 @@ def in_bounds(coord: Coord, prog: List[str]) -> bool:
 def get_char(coord: Coord, prog: List[str]) -> str:
     return prog[coord.y][coord.x]
 
+def is_fn_valid(char: str) -> bool:
+    return not (char in stdlib or char.isspace())
+
 stack  = []
-stdlib = '⊤⊥0123456789""⌃⌄⌥⌀⤵⍖⍏⍆⍋λ+·–/=≠<>≤≥¬∧∨⎡ℝℤ⎢⎣⎤⎥⎦⎫⎬⎭}ℙ'
+stdlib = '⊤⊥0123456789"⌃⌄⌥⌀⤵⍖⍏⍆⍋λ+·–/=≠<>≤≥¬∧∨[]⎡⎢⎣⎤⎥⎦⎫⎬⎭}ℝℤℙ'
 
 def execute(program, outerscope=None):
     fn = {} if outerscope is None else outerscope
@@ -41,6 +43,7 @@ def execute(program, outerscope=None):
             while char in '0123456789' and in_bounds(pointer, program):
                 num.append(char)
                 pointer.x += 1
+                if not in_bounds(pointer, program): break
                 char = get_char(pointer, program)
             pointer.x -= 1
             stack.append(int(''.join(num)))
@@ -98,15 +101,22 @@ def execute(program, outerscope=None):
         elif char == 'λ':
             # Function declaration.
             pointer.x += 1
+            string = []
             char = get_char(pointer, program)
-            if char in stdlib: raise Exception(f"fn name \"{char}\" is reserved")
-            if char in fn.keys(): raise Exception(f"invalid redeclaration of fn {char}")
+            while char != '[' and in_bounds(pointer, program):
+                if not is_fn_valid(char): raise Exception(f"\"{char}\" in fn name is invalid")
+                string.append(char)
+                pointer.x += 1
+                try:
+                    char = get_char(pointer, program)
+                except IndexError:
+                    raise Exception(f"no code block (\"[CODE]\") found after function declaration")
 
-            ident = char
+            ident = ''.join(string)
 
-            pointer.x += 1
-            char = get_char(pointer, program)
-            if char != '[': raise Exception(f"unexpectedly found \"{char}\" instead of code block (\"[CODE]\") after function declaration")
+            if ident == "": raise Exception(f"no function name provided after function declaration")
+
+            if ident in fn.keys(): raise Exception(f"invalid redeclaration of fn {ident}")
 
             subprogramstart = pointer.x
             nestedness = 1
@@ -216,9 +226,24 @@ def execute(program, outerscope=None):
         elif char == 'ℙ':
             # Cast to string.
             stack.append(str(stack.pop()))
-        elif char in fn.keys():
-            # Function call.
-            execute(fn[char], dict(fn))
+        elif is_fn_valid(char):
+            # Check for function call.
+            string = []
+            while is_fn_valid(char) and in_bounds(pointer, program):
+                string.append(char)
+                pointer.x += 1
+                if not in_bounds(pointer, program): break
+                char = get_char(pointer, program)
+
+            pointer.x -= 1
+
+            ident = ''.join(string)
+
+            if ident in fn.keys():
+                execute(fn[ident], dict(fn))
+            else:
+                raise Exception(f"call to an unknown function: \"{ident}\"")
+
         pointer.x += 1
 
 if __name__ == '__main__':
