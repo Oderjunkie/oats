@@ -1,0 +1,17 @@
+λ![λf[⌥ℙ⍏+⍖⌥1≤⎡"·"⍏+⍖⌥1–+f·⎤]""⍖f⌥ℙ⍏⤵+] 10!⌃
+              ⎣" = "⍏⤵+⍖   ⎦
+
+! - the factorial function implemented in 
+    a recursive way (who needs loops anyways).
+    Function returns a nicely formatted output
+    string representing the calculation and then
+    the actual result of the calculation. Apart 
+    from that the function doesn't change the
+    state of the stack.
+
+Below is a shorter version of that function
+that doesn't format the output, just calculates
+the result:
+
+λ![⌥1≤⎡⌥1–+!·⎤]
+      ⎣      ⎦

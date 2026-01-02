@@ -1,0 +1,17 @@
+λfoo["foo"⌃] λbar["bar"⌃] foo bar
+
+
+λ - declare function
+  foo - function name
+    [ - code block start
+      "foo" - "foo" -> stack
+      ⌃ - stack -> stdout      
+    ] - end block
+λ - declare function
+  bar - function name
+    [ - code block start
+      "bar" - "bar" -> stack
+      ⌃ - stack -> stdout      
+    ] - end block
+foo - call function
+bar - call function
