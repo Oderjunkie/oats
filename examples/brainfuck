@@ -1,0 +1,14 @@
+""0 1+ 1+ 1+ 1+ 1+ 1+ 1+ 1+ ⌥0=⎡ ⍏⌥""≠⎡⍖0⎤ 1+ 1+ 1+ 1+ ⌥0=⎡ ⍏⌥""≠⎡⍖0⎤ 1+ 1+ ⍏⌥""≠⎡⍖0⎤ 1+ 1+ 1+ ⍏⌥""≠⎡⍖0⎤ 1+ 1+ 1+ ⍏⌥""≠⎡⍖0⎤ 1+ ⍖ ⍖ ⍖ ⍖ 1–+ ⌥0=⎡⎤⎫⊥⎡⎤ ⍏⌥""≠⎡⍖0⎤ 1+ ⍏⌥""≠⎡⍖0⎤ 1+ ⍏⌥""≠⎡⍖0⎤ 1–+ ⍏⌥""≠⎡⍖0⎤ ⍏⌥""≠⎡⍖0⎤ 1+ ⌥0=⎡ ⍖ ⌥0=⎡⎤⎫⊥⎡⎤ ⍖ 1–+ ⌥0=⎡⎤⎫⊥⎡⎤ ⍏⌥""≠⎡⍖0⎤ ⍏⌥""≠⎡⍖0⎤ ⌥⌃" "⌃ ⍏⌥""≠⎡⍖0⎤ 1–+ 1–+ 1–+ ⌥⌃" "⌃ 1+ 1+ 1+ 1+ 1+ 1+ 1+ ⌥⌃" "⌃ ⌥⌃" "⌃ 1+ 1+ 1+ ⌥⌃" "⌃ ⍏⌥""≠⎡⍖0⎤ ⍏⌥""≠⎡⍖0⎤ ⌥⌃" "⌃ ⍖ 1–+ ⌥⌃" "⌃ ⍖ ⌥⌃" "⌃ 1+ 1+ 1+ ⌥⌃" "⌃ 1–+ 1–+ 1–+ 1–+ 1–+ 1–+ ⌥⌃" "⌃ 1–+ 1–+ 1–+ 1–+ 1–+ 1–+ 1–+ 1–+ ⌥⌃" "⌃ ⍏⌥""≠⎡⍖0⎤ ⍏⌥""≠⎡⍖0⎤ 1+ ⌥⌃" "⌃ ⍏⌥""≠⎡⍖0⎤ 1+ 1+ ⌥⌃" "⌃
+                               ⎣      ⎣  ⎦                ⎣      ⎣  ⎦            ⎣  ⎦               ⎣  ⎦               ⎣  ⎦                ⍆⎦⍆⎣    ⎦      ⎣  ⎦         ⎣  ⎦         ⎣  ⎦          ⎣  ⎦      ⎣  ⎦       ⎣   ⍆⎦⍆⎣    ⎦       ⍆⎦⍆⎣    ⎦      ⎣  ⎦      ⎣  ⎦             ⎣  ⎦                                                                            ⎣  ⎦      ⎣  ⎦                                                                                                                         ⎣  ⎦      ⎣  ⎦                ⎣  ⎦         
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+Original Brainfuck:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+    +  +  +  +  +  +  +  +  [    >         +  +  +  +  [    >         +  +  >         +  +  +  >         +  +  +  >         +  < < < < -   ]         >         +  >         +  >         -   >         >         +  [    < ]         < -   ]         >         >         .      >         -   -   -   .      +  +  +  +  +  +  +  .      .      +  +  +  .      >         >         .      < -   .      < .      +  +  +  .      -   -   -   -   -   -   .      -   -   -   -   -   -   -   -   .      >         >         +  .      >         +  +  .     
+
+
+Brainfuck program that prints "Hello World!" converted
+to Oats instruction-by-instruction using the conversion
+table. In Oats there is no easy way to convert ASCII
+codes to characters, so this program just outputs the
+ASCII codes of the string "Hello World!". The conversion
+from ASCII codes to characters is left as an exersice to
+the reader :D
