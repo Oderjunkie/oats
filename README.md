@@ -99,9 +99,6 @@ The language is therefore turing-complete even with limited stack size, if it co
 
 I have created this conversion table that can convert any valid Brainfuck program into an equivalent Oats program [(example)](examples/brainfuck). Since Brainfuck is turing-complete, this table proves beyond any shadow of the doubt that Oats is also turing-complete.
 
-> [!NOTE]
-> There is no easy way to convert ASCII codes to characters in Oats, so the output command just prints the raw ASCII code to the console with space for better readability. However it is possible in Oats to create a giant _**switch-case**_ that will convert each ASCII code to it's appropriate character, so the language is still turing-complete.
-
 |Brainfuck|Oats|Notes|
 |-|-|-|
 |_start of the program_|`""0`|This instruction marks the beginning of the stack with `""` and then adds a single cell initialized with value 0.|
@@ -109,7 +106,7 @@ I have created this conversion table that can convert any valid Brainfuck progra
 |`<`|`⍖`||
 |`+`|`1+`||
 |`-`|`1–+`||
-|`.`|`⌥⌃" "⌃`|_( see the note above )_|
+|`.`|`⌥ascii⌃`| `ascii` is a function defined in [ascii_fn](examples/ascii_fn)|
 |`,`|`⌀⌄ℤ`||
 |`[`|<pre><code>⌥0=⎡</code><br><code>   ⎣</code></pre>||
 |`]`|<pre><code>⌥0=⎡⎤⎫⊥⎡⎤</code><br><code>⍆⎦⍆⎣    ⎦</code></pre>||
